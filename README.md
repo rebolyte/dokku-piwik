@@ -42,8 +42,8 @@ dokku config:set piwik \
 USERNAME='user' \
 USER_PASSWORD='pass' \
 USER_EMAIL='me@me.com' \
-THE_SITE_NAME='My Company' \
-THE_SITE_URL='https://mycompany.com' \
+SITE_NAME='My Company' \
+SITE_URL='https://mycompany.com' \
 BASE_DOMAIN='piwik.mycompany.com'
 ```
 
