@@ -20,7 +20,7 @@ sed -i "s/#USERNAME/$USERNAME/" $CONFIG_FILE
 sed -i "s/#USER_PASSWORD/$USER_PASSWORD/" $CONFIG_FILE
 sed -i "s/#USER_EMAIL/$USER_EMAIL/" $CONFIG_FILE
 sed -i "s/#SITE_NAME/$SITE_NAME/" $CONFIG_FILE
-sed -i "s/#SITE_URL/$SITE_URL/" $CONFIG_FILE
+sed -i "s~#SITE_URL~$SITE_URL~" $CONFIG_FILE # custom separator to avoid conflict with URL's slashes
 sed -i "s/#BASE_DOMAIN/$BASE_DOMAIN/" $CONFIG_FILE
 
 # sed -i s/#SECRET_TOKEN/$SECRET_TOKEN/ $CONFIG_FILE
