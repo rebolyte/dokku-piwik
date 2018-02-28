@@ -1,5 +1,5 @@
 {
-    "document_root": "/tmp/build",
+    "document_root": "/tmp/build/vendor/piwik/piwik",
     "login": "#USERNAME",
     "password": "#PASSWORD",
     "email": "#EMAIL",
