@@ -37,6 +37,16 @@ dokku ps:scale piwik archive=1
 
 ## Config
 
+```
+dokku config:set piwik \
+USERNAME='user' \
+PASSWORD='pass' \
+EMAIL='me@me.com' \
+SITE_NAME='My Company' \
+SITE_URL='https://mycompany.com' \
+BASE_DOMAIN='piwik.mycompany.com'
+```
+
 The config files have been customised to my needs, make sure you edit it before launching the app and customise it to your own needs. Note that some settings made from the Piwik web UI (e.g. changing plugins) won't persist between launches unless you add those changes to this repository as well.
 
 These env vars are available:
