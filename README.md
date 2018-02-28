@@ -1,10 +1,12 @@
 # dokku-piwik
 
-Composer config and other things borrowed from [here](https://github.com/creativecoder/piwik-heroku).
-
 This is a simple setup of Piwik and a few plugins, suitable for running on [dokku](http://dokku.viewdocs.io/dokku/).
 
 Piwik Version: *3+*
+
+Composer config and other things borrowed from [creativecoder/piwik-heroku](https://github.com/creativecoder/piwik-heroku).
+
+Install script from [nebev/piwik-cli-setup](https://github.com/nebev/piwik-cli-setup).
 
 ## Deploy
 
