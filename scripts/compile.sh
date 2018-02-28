@@ -43,4 +43,4 @@ fi
 php install.php
 
 # Remove temp file
-rm config/install_run.json
+# rm $CONFIG_FILE
