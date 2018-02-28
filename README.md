@@ -1,14 +1,10 @@
 # dokku-piwik
 
+Composer config and other things borrowed from [here](https://github.com/creativecoder/piwik-heroku).
+
 This is a simple setup of Piwik and a few plugins, suitable for running on [dokku](http://dokku.viewdocs.io/dokku/).
 
-Piwik Version: *2.16.1*
-
-Additional plugins:
-- [Custom Dimensions 0.1.4](https://plugins.piwik.org/CustomDimensions)
-- [Platforms Report 1.0.4](https://plugins.piwik.org/PlatformsReport)
-
-Note that some plugins are disabled by default.
+Piwik Version: *3+*
 
 ## Deploy
 

@@ -1,62 +1,116 @@
 {
-    "name": "Aluxian/dokku-piwik",
-    "repositories": [{
-        "type": "package",
-        "package": {
-            "name": "piwik",
-            "version": "2.16.1",
-            "type": "project",
-            "dist": {
-                "type": "zip",
-                "url": "https://builds.piwik.org/piwik-2.16.1.zip"
+    "name": "rebolyte/dokku-piwik",
+    "type": "project",
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "piwik/piwik-icons",
+                "type": "piwik-plugin",
+                "version": "0.0.2",
+                "dist": {
+                    "url": "https://github.com/piwik/piwik-icons/archive/master.zip",
+                    "type": "zip"
+                },
+                "require": {
+                    "composer/installers": "~1.0"
+                },
+                "extra": {
+                    "installer-name": "icons"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "piwik/piwik-log-analytics",
+                "type": "piwik-plugin",
+                "version": "0.0.1",
+                "dist": {
+                    "url": "https://github.com/piwik/piwik-log-analytics/archive/master.zip",
+                    "type": "zip"
+                },
+                "extra": {
+                    "installer-name": "log-analytics"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "piwik/plugin-SecurityInfo",
+                "version": "3.0.4",
+                "dist": {
+                    "url": "https://github.com/piwik/plugin-SecurityInfo/archive/3.0.4.zip",
+                    "type": "zip"
+                },
+                "type": "piwik-plugin",
+                "require": {
+                    "composer/installers": "~1.0"
+                },
+                "extra": {
+                    "installer-name": "SecurityInfo"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "diabl0/piwik-geoip2",
+                "version": "0.1.5",
+                "description": "Plugin for Piwik adding support for MaxMind GeoIP2 database.",
+                "license": "GPL-3.0+",
+                "authors": [
+                    {
+                      "name": "Krzysztof Szatanik",
+                      "homepage": "https://github.com/diabl0/piwik-geoip2"
+                    }
+                ],
+                "require": {
+                    "geoip2/geoip2": "^2.4"
+                },
+                "dist": {
+                    "url": "https://github.com/diabl0/piwik-geoip2/archive/v0.1.5.zip",
+                    "type": "zip"
+                },
+                "type": "piwik-plugin",
+                "extra": {
+                    "installer-name": "GeoIP2"
+                }
             }
         }
-    }, {
-        "type": "package",
-        "package": {
-            "name": "piwik-custom-dimensions",
-            "version": "0.1.4",
-            "type": "project",
-            "dist": {
-                "type": "zip",
-                "url": "https://plugins.piwik.org/api/2.0/plugins/CustomDimensions/download/0.1.4"
-            }
-        }
-    }, {
-        "type": "package",
-        "package": {
-            "name": "piwik-platforms-report",
-            "version": "1.0.4",
-            "type": "project",
-            "dist": {
-                "type": "zip",
-                "url": "https://plugins.piwik.org/api/2.0/plugins/PlatformsReport/download/1.0.4"
-            }
-        }
-    }],
-    "authors": [{
-        "name": "Janez Troha",
-        "email": "dz0ny@ubuntu.si"
-    }, {
-        "name": "Alexandru Rosianu",
-        "email": "me@aluxian.com"
-    }],
+    ],
     "require": {
-        "php": "*",
-        "piwik": "*",
-        "piwik-custom-dimensions": "*",
-        "piwik-platforms-report": "*",
-        "ext-mbstring": "*",
+        "piwik/piwik": "^3.0",
+        "php": "^7.1",
+        "ext-curl": "*",
         "ext-gd": "*",
-        "ext-apcu": "*",
-        "geoip/geoip": "*"
+        "ext-xml": "*",
+        "ext-mbstring": "*",
+        "piwik/plugin-SecurityInfo": "^3.0",
+        "geoip2/geoip2": "^2.6",
+        "diabl0/piwik-geoip2": "^0.1.5",
+        "piwik/piwik-icons": "^0.0",
+        "piwik/piwik-log-analytics": "^0.0.1",
+        "composer/installers": "^1.4"
     },
-    "require-dev": {
-        "heroku/heroku-buildpack-php": "*"
-    },
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Grant Kinney",
+            "email": "hi@grant.mk"
+        }
+    ],
+    "minimum-stability": "stable",
     "scripts": {
         "compile": [
             "bash scripts/compile.sh"
         ]
+    },
+    "extra": {
+        "installer-paths": {
+            "{$name}/": ["piwik/piwik-icons"],
+            "misc/{$name}": ["piwik/piwik-log-analytics"]
+        }
     }
 }

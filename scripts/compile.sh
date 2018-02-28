@@ -22,11 +22,11 @@ sed -i s/#FORCE_SSL/${FORCE_SSL:-0}/ vendor/piwik/piwik/config/config.ini.php
 THS_ENV=`compgen -A variable | grep "^TRUSTED_HOSTS_" | while read TH_ENV ; do echo trusted_hosts[] = "\\\\\"${!TH_ENV}\\\\\"" ; done`
 sed -i "s/#TRUSTED_HOSTS/`echo "$THS_ENV" | awk '{printf("%s\\\\n", $0);}' | sed -e 's/\\\n$//'`/" vendor/piwik/piwik/config/config.ini.php
 
-# Download maxmind db
-curl -sS http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz > vendor/piwik/piwik/misc/GeoLiteCity.dat.gz
-gunzip vendor/piwik/piwik/misc/GeoLiteCity.dat.gz
-mv vendor/piwik/piwik/misc/GeoLiteCity.dat vendor/piwik/piwik/misc/GeoIPCity.dat
-
-# Install plugins
-cp -r vendor/piwik-custom-dimensions vendor/piwik/piwik/plugins/CustomDimensions
-cp -r vendor/piwik-platforms-report vendor/piwik/piwik/plugins/PlatformsReport
+cp -R plugins/* vendor/piwik/piwik/plugins/ 
+cp -R misc/* vendor/piwik/piwik/misc/
+cp -R icons/* vendor/piwik/piwik/plugins/Morpheus/icons/
+cp index.php vendor/piwik/piwik/
+cp config.ini.php vendor/piwik/piwik/config/
+if [ -d .heroku ]; then
+	cp .geoip/share/GeoLite2-City.mmdb .geoip/share/GeoLite2-Country.mmdb vendor/piwik/piwik/misc/; 
+fi
