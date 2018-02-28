@@ -33,7 +33,7 @@ if [ -d .heroku ]; then
 fi
 
 # Run install script
-php ../install.php
+php install.php
 
 # Remove temp file
 rm config/install_run.json
