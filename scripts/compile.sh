@@ -19,9 +19,10 @@ sed -i s/#SECRET_TOKEN/$SECRET_TOKEN/ vendor/piwik/piwik/config/config.ini.php
 sed -i s/#POSTMARK_TOKEN/$POSTMARK_TOKEN/ vendor/piwik/piwik/config/config.ini.php
 sed -i s/#NOREPLY_EMAIL/$NOREPLY_EMAIL/ vendor/piwik/piwik/config/config.ini.php
 sed -i s/#FORCE_SSL/${FORCE_SSL:-0}/ vendor/piwik/piwik/config/config.ini.php
+sed -i s/#TRUSTED_HOSTS/$TRUSTED_HOSTS/ vendor/piwik/piwik/config/config.ini.php
 
-THS_ENV=`compgen -A variable | grep "^TRUSTED_HOSTS_" | while read TH_ENV ; do echo trusted_hosts[] = "\\\\\"${!TH_ENV}\\\\\"" ; done`
-sed -i "s/#TRUSTED_HOSTS/`echo "$THS_ENV" | awk '{printf("%s\\\\n", $0);}' | sed -e 's/\\\n$//'`/" vendor/piwik/piwik/config/config.ini.php
+# THS_ENV=`compgen -A variable | grep "^TRUSTED_HOSTS_" | while read TH_ENV ; do echo trusted_hosts[] = "\\\\\"${!TH_ENV}\\\\\"" ; done`
+# sed -i "s/#TRUSTED_HOSTS/`echo "$THS_ENV" | awk '{printf("%s\\\\n", $0);}' | sed -e 's/\\\n$//'`/" vendor/piwik/piwik/config/config.ini.php
 
 cp -R plugins/* vendor/piwik/piwik/plugins/ 
 cp -R misc/* vendor/piwik/piwik/misc/

@@ -8,12 +8,11 @@ dbname = "#DB_NAME"
 tables_prefix = "piwik_"
 
 [General]
-session_save_handler = "dbtable"
 force_ssl = #FORCE_SSL
 noreply_email_address = "#NOREPLY_EMAIL"
 salt = "#SECRET_TOKEN"
 proxy_client_headers[] = "HTTP_X_FORWARDED_FOR"
-#TRUSTED_HOSTS
+trusted_hosts[] = "#TRUSTED_HOSTS"
 
 [mail]
 transport = "smtp"
