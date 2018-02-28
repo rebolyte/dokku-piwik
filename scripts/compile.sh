@@ -1,7 +1,5 @@
 #!/bin/sh
 
-ls .
-
 CONFIG_FILE=config/install_run.json
 
 # Copy config
@@ -43,6 +41,3 @@ fi
 
 # Run install script
 php install.php
-
-# Remove temp file
-# rm $CONFIG_FILE
