@@ -1,5 +1,7 @@
 #!/bin/sh
 
+ls .
+
 CONFIG_FILE=config/install_run.json
 
 # Copy config
