@@ -15,8 +15,8 @@ Install mariadb and create the app and its db:
 ```
 dokku apps:create piwik
 dokku plugin:install https://github.com/dokku/dokku-mariadb.git mariadb
-dokku mariadb:create piwik
-dokku mariadb:link piwik piwik
+dokku mariadb:create piwikdb
+dokku mariadb:link piwikdb piwik
 ```
 
 Now push piwik:
@@ -40,10 +40,10 @@ dokku ps:scale piwik archive=1
 ```
 dokku config:set piwik \
 USERNAME='user' \
-PASSWORD='pass' \
-EMAIL='me@me.com' \
-SITE_NAME='My Company' \
-SITE_URL='https://mycompany.com' \
+USER_PASSWORD='pass' \
+USER_EMAIL='me@me.com' \
+THE_SITE_NAME='My Company' \
+THE_SITE_URL='https://mycompany.com' \
 BASE_DOMAIN='piwik.mycompany.com'
 ```
 
