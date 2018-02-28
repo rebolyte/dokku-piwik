@@ -2,6 +2,7 @@
 
 # Copy config
 cp config/config.ini.php vendor/piwik/piwik/config/config.ini.php
+cp config/index.php vendor/piwik/piwik/index.php
 
 # Update config
 DB_HOST=`echo $DATABASE_URL | cut -d@ -f2 | cut -d: -f1`
@@ -25,8 +26,6 @@ sed -i "s/#TRUSTED_HOSTS/`echo "$THS_ENV" | awk '{printf("%s\\\\n", $0);}' | sed
 cp -R plugins/* vendor/piwik/piwik/plugins/ 
 cp -R misc/* vendor/piwik/piwik/misc/
 cp -R icons/* vendor/piwik/piwik/plugins/Morpheus/icons/
-cp index.php vendor/piwik/piwik/
-cp config.ini.php vendor/piwik/piwik/config/
 if [ -d .heroku ]; then
 	cp .geoip/share/GeoLite2-City.mmdb .geoip/share/GeoLite2-Country.mmdb vendor/piwik/piwik/misc/; 
 fi
