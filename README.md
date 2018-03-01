@@ -10,7 +10,7 @@ Install script from [nebev/piwik-cli-setup](https://github.com/nebev/piwik-cli-s
 
 ## Deploy
 
-Install mariadb and create the app and its db:
+Install MariaDB, create the app, and its DB:
 
 ```
 # on your server
@@ -33,7 +33,7 @@ SITE_URL='https://mycompany.com' \
 BASE_DOMAIN='piwik.mycompany.com'
 ```
 
-Now push piwik:
+Now push Piwik:
 
 ```
 # on your local box
@@ -63,6 +63,32 @@ The Procfile includes a process responsible for running the `core:archive` task.
 ## Plugins
 
 You can use composer to install additional plugins. See https://github.com/composer/installers and the examples in `composer.json`.
+
+## Add SSL
+
+This is optional but recommended, so that your connection to your Piwik admin is secure and you can access the Piwik tracker JS over HTTPS. Install the letsencrypt plugin:
+
+```
+sudo dokku plugin:install https://github.com/dokku/dokku-letsencrypt.git
+```
+
+Set the config:
+
+```
+dokku config:set --no-restart piwik DOKKU_LETSENCRYPT_EMAIL=YOUREMAIL@WHATEVER
+```
+
+Generate the SSL certificate:
+
+```
+dokku letsencrypt piwik
+```
+
+Enable the letsencrypt job:
+
+```
+dokku letsencrypt:cron-job --add
+```
 
 ## License
 
